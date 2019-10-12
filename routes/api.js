@@ -10,15 +10,18 @@ connectDB.connect();
     Get All Products
 */
 router.get("/getProducts",(req,res) =>{
-    Products.find()
+    Products.find({})
     .then((result)=>{
-        
+        res.status(201).json({data: result});
     })
     .catch(err =>{
         console.log("Something Went Wrong With Get Products");
     })
 })
 
+/*
+    Insert Products
+*/
 router.post("/populateData", (req,res)=>{
         
         let date = new Date();
@@ -33,7 +36,6 @@ router.post("/populateData", (req,res)=>{
         })
 
         newProduct.save((err, result)=>{
-            console.log(err);
             if(err) res.status(401).json({Error: err});
             else res.status(200).json("Works");
         });
@@ -41,13 +43,26 @@ router.post("/populateData", (req,res)=>{
         counter++;
 })
 
+
 /*
-    Get All User Transactions
-    Will Configure for Later purposes
+    Get Product Info By Product PID
 */
 
-router.get("/getUserProducts",(req,res)=>{
-    
+router.post("/getByID",(req,res)=>{
+    Products.findOne({
+        pid : req.body.pid
+    })
+    .then((products)=>{
+        if(users){
+            res.status(200).json({
+                Product: products
+            });
+        }else{
+            res.status(404).json({
+                Error: "Product ID is not there"
+            })
+        }
+    })
 })
 
 module.exports = router;

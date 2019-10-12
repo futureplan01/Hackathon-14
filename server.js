@@ -17,7 +17,6 @@ app.use((req, res, next) => {
 });
 
 app.use('/',routes);
-
 app.get('/sample', (req, res) => res.send('It Working yay'));
 const port = process.env.PORT || 8080;
 app.listen(port, () => console.log(`Server running on port ${port}`));
