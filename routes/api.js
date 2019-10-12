@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Products = require("../model/Products");
+const Purchased = require('../model/Purchased');
 const connectDB = require('../model/connectDB');
 
 let counter = 5;
@@ -69,4 +70,16 @@ router.post("/getByID",(req,res)=>{
     })
 })
 
+router.get('/transaction',(req,res)=>{
+    Purchased.findOne({})
+    .then((products) =>{
+        if(products){
+            if(product) res.status(200).json({data: result});
+            else res.status(500)
+        }
+    })
+    .catch((err)=>{
+        res.status(500).json({Error: err});
+    })
+})
 module.exports = router;
