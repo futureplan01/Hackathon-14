@@ -7,6 +7,7 @@ let counter = 5;
 
 connectDB.connect();
 /*
+    Get /getProducts
     Get All Products
 */
 router.get("/getProducts",(req,res) =>{
@@ -20,6 +21,7 @@ router.get("/getProducts",(req,res) =>{
 })
 
 /*
+    Post /populateData
     Insert Products
 */
 router.post("/populateData", (req,res)=>{
@@ -45,7 +47,9 @@ router.post("/populateData", (req,res)=>{
 
 
 /*
+    Get '/getByID'
     Get Product Info By Product PID
+    req.body.pid
 */
 
 router.post("/getByID",(req,res)=>{
