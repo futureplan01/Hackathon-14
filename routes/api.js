@@ -45,9 +45,10 @@ router.post("/populateData", (req,res)=>{
 
         counter++;
 })
-
+router.post('/scanQR', (req,res)=>{
+    
+})
 router.post("/populateTransaction", (req,res)=>{
-    console.log("ello");
     let date = new Date();
     const newPurchased1 = new Purchased({
         pid: 1,
