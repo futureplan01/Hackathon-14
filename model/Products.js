@@ -11,7 +11,6 @@ const UserSchema = new Schema({
     },
     name: {
         type: String,
-        minlength: 1,
         trim: true
     },
     containerType: {
@@ -21,8 +20,7 @@ const UserSchema = new Schema({
         trim: true
     },
     Ingredience: {
-        type: Date,
-        default: Date.now
+        type: String,
     },
     showUsers: {
         type: String
