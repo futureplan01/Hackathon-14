@@ -115,8 +115,6 @@ router.post("/getByID",(req,res)=>{
     })
 })
 
-router.po
-
 router.get('/transaction',(req,res)=>{
     Purchased.findOne({})
     .then((products) =>{
