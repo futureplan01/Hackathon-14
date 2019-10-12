@@ -46,6 +46,50 @@ router.post("/populateData", (req,res)=>{
         counter++;
 })
 
+router.post("/populateTransaction", (req,res)=>{
+    console.log("ello");
+    let date = new Date();
+    const newPurchased1 = new Purchased({
+        pid: 1,
+        name: "Clinique Liquid Facial Soap Mild",
+        purchasedDate: date,
+        expireDate: date.setMonth(date.getMonth() + 8)
+    })
+
+    const newPurchased2 = new Purchased({
+        pid: 3,
+        name: "Clinique Moisture Surge",
+        purchasedDate: date,
+        expireDate: date.setMonth(date.getMonth() + 8)
+    })
+
+    const newPurchased3 = new Purchased({
+        pid: 4,
+        name: "Prep + Prime Fix+",
+        purchasedDate: date,
+        expireDate: date.setMonth(date.getMonth() + 8)
+    })
+
+    newPurchased1.save((err, result)=>{
+        if(err){
+            res.status(500);
+        }
+    })
+
+    newPurchased3.save((err, result)=>{
+        if(err){
+            res.status(500);  
+        }
+    })
+    newPurchased2.save((err, result)=>{
+        if(err){
+            res.status(500);    
+        }
+    })
+
+    res.status(200).json({big: "daddy"});
+})
+
 
 /*
     Get '/getByID'
@@ -70,12 +114,14 @@ router.post("/getByID",(req,res)=>{
     })
 })
 
+router.po
+
 router.get('/transaction',(req,res)=>{
     Purchased.findOne({})
     .then((products) =>{
         if(products){
             if(product) res.status(200).json({data: result});
-            else res.status(500)
+            else res.status(500);
         }
     })
     .catch((err)=>{
